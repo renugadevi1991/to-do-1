@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Ensure dark mode works by directly targeting classes */
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9fafb; /* light gray */
+  color: #111827; /* dark gray */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles */
+html.dark,
+body.dark,
+.dark {
+  background-color: #111827 !important; /* dark gray */
+  color: #f9fafb !important; /* light gray */
+}
+
+.dark html,
+.dark body {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+}
+
+/* Ensure all containers follow the theme */
+.dark .bg-gray-50 {
+  background-color: #111827 !important;
+}
+
+.dark .text-gray-900 {
+  color: #f9fafb !important;
 }
